@@ -27,7 +27,7 @@ def summerize(objective, content):
         chunk_overlap=500
         )
     docs = text_splitter.create_documents([content])
-    
+
     # Generate the Prompt Template that will be used in the chain
     map_prompt = """
     Write a summary of the following text for {objective}:
@@ -47,8 +47,5 @@ def summerize(objective, content):
         combine_prompt=prompt_template,
         verbose=True
         )
-    
-    # Run the query and return the output
-    output = summary_chain.run(input_documents=docs, objective=objective)
-    
-    return output
+
+    return summary_chain.run(input_documents=docs, objective=objective)
